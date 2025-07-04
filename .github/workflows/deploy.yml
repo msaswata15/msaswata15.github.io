@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -16,8 +21,6 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
-      - name: Copy CNAME
-        run: cp public/CNAME dist/CNAME
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
