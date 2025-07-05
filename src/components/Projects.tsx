@@ -12,7 +12,7 @@ const Projects = () => {
       features: ["Import transactions", "Spending categorization", "Interactive charts", "Budget analysis", "Responsive design"],
       type: "Full Stack",
       gradient: "from-green-500/20 to-emerald-500/20",
-      liveUrl: "https://personal-finance-visualizer.vercel.app/",
+      liveUrl: "https://financetracker-steel.vercel.app/",
       githubUrl: "https://github.com/msaswata15/personal-finance-visualizer"
     },
     {
