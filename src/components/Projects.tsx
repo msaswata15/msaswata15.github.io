@@ -5,6 +5,17 @@ import { ExternalLink, Github, Code, Database, Brain, ShoppingCart, Users, BookO
 const Projects = () => {
   const projects = [
     {
+      title: "Personal Finance Visualizer",
+      description: "A modern web app to visualize and analyze your personal finances. Import transactions, categorize spending, and get beautiful interactive charts for budgeting and financial planning.",
+      icon: <Database className="text-green-400" size={24} />,
+      tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Chart.js"],
+      features: ["Import transactions", "Spending categorization", "Interactive charts", "Budget analysis", "Responsive design"],
+      type: "Full Stack",
+      gradient: "from-green-500/20 to-emerald-500/20",
+      liveUrl: "https://personal-finance-visualizer.vercel.app/",
+      githubUrl: "https://github.com/msaswata15/personal-finance-visualizer"
+    },
+    {
       title: "LeetCode Hint Genie",
       description: "A sleek, AI-powered Chrome extension that provides instant hints and solutions for LeetCode problems. Features smart problem detection, AI-powered assistance with hints and solutions, and a beautiful glassmorphism UI design.",
       icon: <Lightbulb className="text-yellow-400" size={24} />,
