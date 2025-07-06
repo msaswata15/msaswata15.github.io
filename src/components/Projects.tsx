@@ -1,9 +1,20 @@
+// ...existing code...
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code, Database, Brain, ShoppingCart, Users, BookOpen, MessageSquare, Calendar, Sparkles, Lightbulb } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
+    {
+      title: "Digital Detox",
+      description: "A productivity and wellness app that helps users track and reduce their digital device usage. Features daily/weekly analytics, goal setting, and motivational insights to encourage healthy screen habits.",
+      icon: <Sparkles className="text-pink-400" size={24} />,
+      tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Chart.js"],
+      features: ["Screen time tracking", "Goal setting", "Usage analytics", "Motivational insights", "Responsive design"],
+      type: "Full Stack",
+      gradient: "from-pink-500/20 to-fuchsia-500/20",
+      githubUrl: "https://github.com/msaswata15/Digital-Detox"
+    },
     {
       title: "Personal Finance Visualizer",
       description: "A modern web app to visualize and analyze your personal finances. Import transactions, categorize spending, and get beautiful interactive charts for budgeting and financial planning.",
