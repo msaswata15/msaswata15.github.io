@@ -8,7 +8,7 @@ const Education = () => {
       title: "B.Tech in Computer Science",
       institution: "Institute of Engineering & Management, Kolkata",
       period: "2022 - 2026",
-      details: "SGPA: 9.17",
+      details: "SGPA: 9.11",
       icon: <GraduationCap className="text-blue-400" size={20} />
     },
     {
