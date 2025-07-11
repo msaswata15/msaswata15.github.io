@@ -7,7 +7,7 @@ const About = () => {
     "ISC School Topper & House Captain 2021–2022",
     "Top 5% performer & Silver Certification in NPTEL",
     "Organized a college-level Table Tennis Tournament",
-    "B.Tech SGPA: 9.17"
+    "B.Tech SGPA: 9.11"
   ];
 
   const containerVariants = {
@@ -211,7 +211,7 @@ const About = () => {
                       {
                         title: "B.Tech in Computer Science",
                         institution: "Institute of Engineering & Management, Kolkata",
-                        details: "2022-2026 • SGPA: 9.17"
+                        details: "2022-2026 • SGPA: 9.11"
                       },
                       {
                         title: "ISC (Class 12)",
