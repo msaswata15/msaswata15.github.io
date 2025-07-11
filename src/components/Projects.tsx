@@ -34,7 +34,7 @@ const Projects = () => {
       features: ["Smart problem detection", "AI-powered hints & solutions", "Modern glassmorphism UI", "Dark theme"],
       type: "Browser Extension",
       gradient: "from-yellow-500/20 to-amber-500/20",
-      liveUrl: "https://github.com/msaswata15/leet-hint-extension",
+      liveUrl: "https://microsoftedge.microsoft.com/addons/detail/nnoapnnphghopjaghhlikgackebjiaek",
       githubUrl: "https://github.com/msaswata15/leet-hint-extension"
     },
     {
