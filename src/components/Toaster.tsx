@@ -70,13 +70,13 @@ const Toaster: React.FC<ToastProps> = ({
   };
 
   return (
-    <div className={`fixed top-6 right-6 z-50 transition-all duration-300 ease-out ${
+    <div className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ease-out max-w-sm sm:max-w-md ${
       animate ? 'translate-x-0 opacity-100 toaster-enter' : 'translate-x-full opacity-0 toaster-exit'
     }`}>
       <div className={`
         bg-gradient-to-r ${getStyles()} 
         backdrop-blur-md border rounded-xl shadow-2xl 
-        p-4 min-w-[320px] max-w-md
+        p-4 min-w-[280px] sm:min-w-[320px] max-w-md
         ${type === 'success' ? 'shadow-green-500/25' : 'shadow-red-500/25'}
         transform hover:scale-105 transition-transform duration-200
       `}>

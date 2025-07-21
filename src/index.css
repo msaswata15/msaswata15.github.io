@@ -381,22 +381,22 @@ a:focus {
 
 @keyframes toaster-slide-in {
   0% {
-    transform: translateX(100%);
+    transform: translateX(100%) translateY(20px);
     opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) translateY(0);
     opacity: 1;
   }
 }
 
 @keyframes toaster-slide-out {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) translateY(0);
     opacity: 1;
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(100%) translateY(20px);
     opacity: 0;
   }
 }
@@ -406,10 +406,10 @@ a:focus {
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
   }
   60% {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
   }
 }
 
