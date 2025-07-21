@@ -46,9 +46,56 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-gray-900 to-slate-900 relative overflow-hidden">
-      {/* Background Elements */}
+    <section id="about" className="py-20 bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 relative overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
+        {/* Animated gradient orbs */}
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-72 h-72 rounded-full blur-3xl opacity-20"
+            style={{
+              background: `linear-gradient(45deg, ${['#00d4ff', '#ff006e', '#8338ec', '#06ffa5', '#ffbe0b'][i]}, transparent)`,
+              left: `${20 + i * 15}%`,
+              top: `${10 + i * 20}%`,
+            }}
+            animate={{
+              scale: [1, 1.4, 1],
+              rotate: [0, 180, 360],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: 25 + i * 5,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 2,
+            }}
+          />
+        ))}
+        
+        {/* Floating particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-60"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -50, 0],
+              x: [0, Math.sin(i) * 30, 0],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.2,
+            }}
+          />
+        ))}
+        
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
       </div>

@@ -5,11 +5,30 @@ import { Menu, X, Github, Linkedin, Mail, Code } from 'lucide-react';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Update active section based on scroll position
+      const sections = ['hero', 'about', 'skills', 'projects', 'education', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -86,25 +105,31 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="relative text-gray-300 hover:text-white transition-colors duration-200 font-medium py-2 px-1"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                {item}
-                <motion.div
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-            ))}
+            {navItems.map((item, index) => {
+              const isActive = activeSection === item.toLowerCase();
+              return (
+                <motion.button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className={`relative transition-colors duration-200 font-medium py-2 px-1 ${
+                    isActive ? 'text-blue-400' : 'text-gray-300 hover:text-white'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  {item}
+                  <motion.div
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: isActive ? 1 : 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.button>
+              );
+            })}
           </nav>
 
           {/* Social Links */}

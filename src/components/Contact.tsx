@@ -117,11 +117,45 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-      {/* Background Elements */}
+    <section id="contact" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden min-h-screen">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-green-500/10 to-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-blue-900/5 to-transparent"></div>
+        
+        {/* Communication Grid Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="h-full w-full bg-[linear-gradient(rgba(0,170,255,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(0,170,255,0.3)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+        </div>
+        
+        {/* Floating Signal Elements */}
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={i}
+            className={`absolute ${
+              i % 4 === 0 ? 'w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full' :
+              i % 4 === 1 ? 'w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full' :
+              i % 4 === 2 ? 'w-4 h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full' :
+              'w-1 h-4 bg-gradient-to-b from-cyan-400 to-blue-400 rounded-full'
+            } opacity-20`}
+            style={{
+              left: `${8 + (i * 9)}%`,
+              top: `${15 + (i * 7)}%`,
+            }}
+            animate={{
+              y: [0, -25, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.4, 1],
+              rotate: [0, 360]
+            }}
+            transition={{
+              duration: 3.5 + Math.random() * 2.5,
+              repeat: Infinity,
+              delay: i * 0.3
+            }}
+          />
+        ))}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

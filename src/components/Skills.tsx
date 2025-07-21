@@ -83,11 +83,59 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-slate-900 to-gray-800 relative overflow-hidden">
-      {/* Background Elements */}
+    <section id="skills" className="py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 relative overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-full blur-3xl"></div>
+        {/* Multiple animated gradient orbs */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full blur-3xl"
+            style={{
+              width: `${200 + i * 40}px`,
+              height: `${200 + i * 40}px`,
+              background: `linear-gradient(${45 + i * 60}deg, ${['#00d4ff', '#ff006e', '#8338ec', '#06ffa5', '#ffbe0b', '#fb5607'][i]}15, transparent)`,
+              left: `${10 + i * 15}%`,
+              top: `${5 + i * 15}%`,
+            }}
+            animate={{
+              scale: [1, 1.3, 1],
+              rotate: [0, 180, 360],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 20 + i * 3,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 1.5,
+            }}
+          />
+        ))}
+        
+        {/* Floating tech symbols */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={`tech-${i}`}
+            className="absolute text-cyan-400/20 text-2xl font-mono"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              rotate: [0, 360],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: 15 + Math.random() * 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+          >
+            {['</>', '{}', '[]', '()', '<html>', 'CSS', 'JS', 'API', 'SQL', 'JSON', 'HTTP', 'REST', 'DOM', 'UI', 'UX'][i] || '{}'}
+          </motion.div>
+        ))}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
