@@ -1,25 +1,85 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Eye, Trophy } from 'lucide-react';
-import { useCountUp } from '../hooks/useCountUp';
 
 const GitHubStats: React.FC = () => {
   // Custom component for animated stat cards
   const StatCard: React.FC<{ stat: typeof stats[0]; delay: number }> = ({ stat, delay }) => {
-    const formatValue = (value: number) => {
-      if (value >= 1000) {
-        return { displayValue: Math.floor(value / 1000), suffix: `K${stat.suffix}` };
-      }
-      return { displayValue: value, suffix: stat.suffix };
-    };
+    const [displayValue, setDisplayValue] = React.useState("0");
+    const [isVisible, setIsVisible] = React.useState(false);
+    const elementRef = React.useRef<HTMLDivElement>(null);
+    const hasStarted = React.useRef(false);
 
-    const { displayValue, suffix } = formatValue(stat.value);
-    const { displayValue: animatedValue, elementRef } = useCountUp({
-      end: displayValue,
-      duration: 2000,
-      delay: delay,
-      suffix: suffix
-    });
+    // Special handling for Profile Views to show 0-999 then 1K+
+    const isProfileViews = stat.label === "Profile Views";
+
+    React.useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !hasStarted.current) {
+            setIsVisible(true);
+            hasStarted.current = true;
+          }
+        },
+        { threshold: 0.3 }
+      );
+
+      if (elementRef.current) {
+        observer.observe(elementRef.current);
+      }
+
+      return () => observer.disconnect();
+    }, []);
+
+    React.useEffect(() => {
+      if (isVisible) {
+        const timer = setTimeout(() => {
+          const duration = 2500; // Slightly longer for the special animation
+          const startTime = Date.now();
+          
+          const updateCount = () => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function for smooth animation
+            const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            
+            if (isProfileViews) {
+              // Special logic for profile views: count to 999, then show 1K+
+              const targetValue = 1000; // We'll count to 1000 internally
+              const currentCount = Math.floor(targetValue * easeOutExpo);
+              
+              if (currentCount >= 999 && progress > 0.95) {
+                setDisplayValue("1K+");
+              } else if (currentCount >= 999) {
+                setDisplayValue("999+");
+              } else {
+                setDisplayValue(currentCount.toString());
+              }
+            } else {
+              // Normal counting for other stats
+              const formatValue = (value: number) => {
+                if (value >= 1000) {
+                  return Math.floor(value / 1000) + "K" + stat.suffix;
+                }
+                return value + stat.suffix;
+              };
+              
+              const currentCount = Math.floor(stat.value * easeOutExpo);
+              setDisplayValue(formatValue(currentCount));
+            }
+            
+            if (progress < 1) {
+              requestAnimationFrame(updateCount);
+            }
+          };
+          
+          updateCount();
+        }, delay);
+
+        return () => clearTimeout(timer);
+      }
+    }, [isVisible, stat.value, stat.suffix, delay, isProfileViews]);
 
     return (
       <motion.div
@@ -42,7 +102,7 @@ const GitHubStats: React.FC = () => {
           }}
           transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
         >
-          {animatedValue}
+          {displayValue}
         </motion.div>
         <div className="text-gray-400 text-sm font-medium group-hover:text-gray-300 transition-colors">
           {stat.label}
