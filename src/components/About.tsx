@@ -264,6 +264,11 @@ const About = () => {
                         title: "ISC (Class 12)",
                         institution: "The Assembly of God Church School, Haldia",
                         details: "2022 • 94.75%"
+                      },
+                      {
+                        title: "ICSE (Class 10)",
+                        institution: "The Assembly of God Church School, Haldia",
+                        details: "2020 • 92.4%"
                       }
                     ].map((edu, index) => (
                       <motion.div

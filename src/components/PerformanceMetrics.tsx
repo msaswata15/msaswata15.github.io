@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Clock, Users, Eye, TrendingUp, Zap } from 'lucide-react';
+import { Activity, Clock, TrendingUp, Zap } from 'lucide-react';
 
 interface Metric {
   id: string;
@@ -19,45 +19,73 @@ const PerformanceMetrics: React.FC = () => {
     { id: '4', label: 'Code Commits', value: 0, suffix: 'K+', icon: <TrendingUp size={20} />, color: 'from-orange-500 to-red-500' },
   ]);
 
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const finalValues = [25, 3, 27, 1]; // Updated based on GitHub analysis
 
   useEffect(() => {
-    const animateMetrics = () => {
-      const duration = 2000; // 2 seconds
-      const steps = 60;
-      const stepDuration = duration / steps;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            animateMetrics();
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
 
-      let currentStep = 0;
-      const interval = setInterval(() => {
-        currentStep++;
-        const progress = currentStep / steps;
-        const easedProgress = easeOutCubic(progress);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
+  const animateMetrics = () => {
+    const duration = 2500; // Slightly longer for better visual impact
+    const steps = 100; // More steps for smoother animation
+    const stepDuration = duration / steps;
+
+    let currentStep = 0;
+    const interval = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+      const easedProgress = easeOutExpo(progress);
+
+      setMetrics(prevMetrics =>
+        prevMetrics.map((metric, index) => ({
+          ...metric,
+          value: Math.round(finalValues[index] * easedProgress)
+        }))
+      );
+
+      if (currentStep >= steps) {
+        clearInterval(interval);
+        // Set final values to ensure accuracy
         setMetrics(prevMetrics =>
           prevMetrics.map((metric, index) => ({
             ...metric,
-            value: Math.round(finalValues[index] * easedProgress)
+            value: finalValues[index]
           }))
         );
+      }
+    }, stepDuration);
 
-        if (currentStep >= steps) {
-          clearInterval(interval);
-        }
-      }, stepDuration);
+    return () => clearInterval(interval);
+  };
 
-      return () => clearInterval(interval);
-    };
-
-    const timer = setTimeout(animateMetrics, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const easeOutCubic = (t: number): number => {
-    return 1 - Math.pow(1 - t, 3);
+  // Enhanced easing function for more dramatic effect
+  const easeOutExpo = (t: number): number => {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
   };
 
   return (
-    <section className="py-16 bg-gray-900/50 backdrop-blur-sm">
+    <section ref={sectionRef} className="py-16 bg-gray-900/50 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
@@ -69,35 +97,78 @@ const PerformanceMetrics: React.FC = () => {
           {metrics.map((metric, index) => (
             <motion.div
               key={metric.id}
-              className="text-center"
+              className="text-center relative group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
               whileHover={{ scale: 1.05 }}
             >
+              {/* Animated background glow */}
               <motion.div
-                className={`inline-flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gradient-to-r ${metric.color} text-white shadow-lg`}
+                className={`absolute inset-0 rounded-xl bg-gradient-to-r ${metric.color} opacity-0 blur-xl group-hover:opacity-20`}
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: hasAnimated ? [0, 0.1, 0] : 0
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: index * 0.5
+                }}
+              />
+
+              <motion.div
+                className={`inline-flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gradient-to-r ${metric.color} text-white shadow-lg relative z-10`}
                 whileHover={{ 
                   boxShadow: "0 10px 25px rgba(0,0,0,0.3)",
-                  scale: 1.1
+                  scale: 1.1,
+                  rotate: [0, -10, 10, 0]
                 }}
                 transition={{ duration: 0.3 }}
+                animate={hasAnimated ? {
+                  boxShadow: [
+                    "0 4px 15px rgba(0,0,0,0.1)",
+                    "0 8px 30px rgba(59, 130, 246, 0.3)",
+                    "0 4px 15px rgba(0,0,0,0.1)"
+                  ]
+                } : {}}
               >
-                {metric.icon}
+                <motion.div
+                  animate={hasAnimated ? {
+                    rotate: [0, 360],
+                    scale: [1, 1.2, 1]
+                  } : {}}
+                  transition={{ 
+                    duration: 2, 
+                    delay: index * 0.2,
+                    ease: "easeInOut" 
+                  }}
+                >
+                  {metric.icon}
+                </motion.div>
               </motion.div>
               
               <motion.div
-                className="text-3xl md:text-4xl font-bold text-white mb-2"
+                className="text-3xl md:text-4xl font-bold text-white mb-2 font-mono tracking-wide"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                animate={hasAnimated ? {
+                  textShadow: [
+                    "0 0 0px currentColor",
+                    "0 0 20px currentColor",
+                    "0 0 0px currentColor"
+                  ]
+                } : {}}
               >
-                {metric.value}{metric.suffix}
+                <span className="inline-block">
+                  {metric.value}{metric.suffix}
+                </span>
               </motion.div>
               
-              <div className="text-gray-400 text-sm md:text-base font-medium">
+              <div className="text-gray-400 text-sm md:text-base font-medium group-hover:text-gray-300 transition-colors">
                 {metric.label}
               </div>
             </motion.div>

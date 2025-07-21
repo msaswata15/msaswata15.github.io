@@ -1,8 +1,77 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star, GitFork, Eye, Trophy } from 'lucide-react';
+import { Star, Eye, Trophy } from 'lucide-react';
+import { useCountUp } from '../hooks/useCountUp';
 
 const GitHubStats: React.FC = () => {
+  // Custom component for animated stat cards
+  const StatCard: React.FC<{ stat: typeof stats[0]; delay: number }> = ({ stat, delay }) => {
+    const formatValue = (value: number) => {
+      if (value >= 1000) {
+        return { displayValue: Math.floor(value / 1000), suffix: `K${stat.suffix}` };
+      }
+      return { displayValue: value, suffix: stat.suffix };
+    };
+
+    const { displayValue, suffix } = formatValue(stat.value);
+    const { displayValue: animatedValue, elementRef } = useCountUp({
+      end: displayValue,
+      duration: 2000,
+      delay: delay,
+      suffix: suffix
+    });
+
+    return (
+      <motion.div
+        ref={elementRef}
+        className="text-center p-6 bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 group"
+        whileHover={{ 
+          scale: 1.05, 
+          borderColor: "#8b5cf6",
+          boxShadow: "0 10px 40px rgba(139, 92, 246, 0.3)"
+        }}
+        transition={{ duration: 0.3 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <motion.div 
+          className={`text-4xl font-bold ${stat.color} mb-2 font-mono tracking-wide`}
+          animate={{ 
+            textShadow: ["0 0 0px currentColor", "0 0 20px currentColor", "0 0 0px currentColor"]
+          }}
+          transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+        >
+          {animatedValue}
+        </motion.div>
+        <div className="text-gray-400 text-sm font-medium group-hover:text-gray-300 transition-colors">
+          {stat.label}
+        </div>
+        
+        {/* Animated background pulse */}
+        <motion.div
+          className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20`}
+          style={{
+            background: `linear-gradient(45deg, ${
+              stat.color.includes('blue') ? '#3b82f6' :
+              stat.color.includes('green') ? '#10b981' :
+              stat.color.includes('purple') ? '#8b5cf6' :
+              '#f97316'
+            }, transparent)`
+          }}
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0, 0.1, 0]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "loop"
+          }}
+        />
+      </motion.div>
+    );
+  };
   const achievements = [
     {
       icon: <Trophy className="text-yellow-400" size={24} />,
@@ -17,10 +86,10 @@ const GitHubStats: React.FC = () => {
   ];
 
   const stats = [
-    { label: "Repositories", value: "27+", color: "text-blue-400" },
-    { label: "Languages", value: "8+", color: "text-green-400" },
-    { label: "Contributions", value: "500+", color: "text-purple-400" },
-    { label: "Profile Views", value: "1K+", color: "text-orange-400" }
+    { label: "Repositories", value: 27, suffix: "+", color: "text-blue-400" },
+    { label: "Languages", value: 8, suffix: "+", color: "text-green-400" },
+    { label: "Contributions", value: 500, suffix: "+", color: "text-purple-400" },
+    { label: "Profile Views", value: 1000, suffix: "+", color: "text-orange-400" }
   ];
 
   return (
@@ -50,19 +119,11 @@ const GitHubStats: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {stats.map((stat, index) => (
-            <motion.div
+            <StatCard 
               key={stat.label}
-              className="text-center p-6 bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50"
-              whileHover={{ scale: 1.05, borderColor: "#6366f1" }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className={`text-3xl font-bold ${stat.color} mb-2`}>
-                {stat.value}
-              </div>
-              <div className="text-gray-400 text-sm">
-                {stat.label}
-              </div>
-            </motion.div>
+              stat={stat} 
+              delay={index * 200} 
+            />
           ))}
         </motion.div>
 
