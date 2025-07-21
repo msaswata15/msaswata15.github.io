@@ -372,3 +372,57 @@ a:focus {
   transition: color 0.2s ease, background-color 0.2s ease;
   will-change: color, background-color;
 }
+
+/* Toaster animations */
+@keyframes toaster-progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+@keyframes toaster-slide-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toaster-slide-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes toaster-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+.toaster-progress {
+  animation: toaster-progress linear;
+  animation-fill-mode: forwards;
+  transform-origin: left;
+}
+
+.toaster-enter {
+  animation: toaster-slide-in 0.3s ease-out, toaster-bounce 0.6s ease-out 0.3s;
+}
+
+.toaster-exit {
+  animation: toaster-slide-out 0.3s ease-in;
+}

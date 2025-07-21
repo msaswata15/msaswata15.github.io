@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, MessageCircle, User, AtSign, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, MessageCircle, User, AtSign } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import Toaster from './Toaster';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{success: boolean; message: string} | null>(null);
+  const [showToaster, setShowToaster] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,15 +54,29 @@ const Contact = () => {
       console.log('Email sent successfully!', result);
       setSubmitStatus({
         success: true,
-        message: 'Thank you! Your message has been sent successfully.'
+        message: '🎉 Message sent successfully! I\'ll get back to you within 24 hours.'
       });
+      setShowToaster(true);
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Failed to send email:', error);
+      let errorMessage = 'Oops! Something went wrong. Please try again later.';
+      
+      if (error instanceof Error) {
+        if (error.message.includes('configuration')) {
+          errorMessage = '⚙️ Email service configuration error. Please contact me directly at msaswata15@gmail.com';
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+          errorMessage = '🌐 Network error. Please check your connection and try again.';
+        } else {
+          errorMessage = `❌ ${error.message}`;
+        }
+      }
+      
       setSubmitStatus({
         success: false,
-        message: error instanceof Error ? error.message : 'Oops! Something went wrong. Please try again later.'
+        message: errorMessage
       });
+      setShowToaster(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -396,6 +412,20 @@ const Contact = () => {
           </motion.div>
         </motion.div>
       </div>
+      
+      {/* Toaster Component */}
+      {submitStatus && (
+        <Toaster
+          message={submitStatus.message}
+          type={submitStatus.success ? 'success' : 'error'}
+          isVisible={showToaster}
+          onClose={() => {
+            setShowToaster(false);
+            setSubmitStatus(null);
+          }}
+          duration={5000}
+        />
+      )}
     </section>
   );
 };
