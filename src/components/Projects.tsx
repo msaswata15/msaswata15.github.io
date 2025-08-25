@@ -1,7 +1,61 @@
-import { ExternalLink, Github, Code, Database, Brain, ShoppingCart, Users, BookOpen, MessageSquare, Calendar, Sparkles, Lightbulb } from 'lucide-react';
+import { ExternalLink, Github, Code, Database, Brain, ShoppingCart, Users, BookOpen, MessageSquare, Calendar, Sparkles, Lightbulb, Server } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
+    {
+      title: "SyntaxHut – LeetCode Solutions Platform",
+      description: "A backend-focused platform hosting 1400+ curated LeetCode solutions across multiple languages with automated ingestion, SEO optimization, and global deployment.",
+      icon: <Code className="text-blue-400" size={24} />,
+      tech: ["Java", "Spring Boot", "PostgreSQL", "GitHub Actions", "Cloudflare", "Vercel"],
+      features: [
+        "Automated content ingestion via GitHub Actions + Gemini AI",
+        "Secure backend APIs for solutions and contact handling",
+        "SEO, monetization, and analytics integrations",
+        "Deployment on Vercel with Cloudflare CDN",
+        "Environment-based credential management"
+      ],
+      type: "Backend",
+      gradient: "from-blue-500/20 to-indigo-500/20",
+      liveUrl: "https://syntaxhut.tech/",
+      githubUrl: "https://github.com/msaswata15/syntaxhut"
+    },
+    {
+      title: "Library Management System",
+      description: "A secure backend system for managing library operations with JWT authentication, role-based access, and automated workflows for books and members.",
+      icon: <BookOpen className="text-yellow-400" size={24} />,
+      tech: ["Spring Boot", "Spring Security (JWT)", "PostgreSQL", "JPA/Hibernate", "JUnit", "Mockito"],
+      features: [
+        "Role-based access control (Librarian/User)",
+        "Secure JWT-authenticated REST APIs",
+        "Book management: add, update, delete, search, availability tracking",
+        "Member management and borrowing/return workflows with overdue fines",
+        "Extra features: book recommendations, request system, audit trail, notifications",
+        "Robust error handling, validation, and unit/integration testing"
+      ],
+      type: "Backend",
+      gradient: "from-yellow-500/20 to-amber-500/20",
+      githubUrl: "https://github.com/msaswata15/LibraryManagementSystem"
+    }, {
+      title: "LeetSolution – Problem Management Platform",
+      description: "A scalable, automated platform for managing 1500+ coding problems and solutions, with AI-driven enrichment, multi-language support, and CI/CD pipelines for synchronization across backend and frontend.",
+      icon: <Server className="text-purple-400" size={24} />,
+      tech: ["Node.js", "Python", "Spring Boot (planned)", "MySQL (planned)", "GitHub Actions", "JSON", "CI/CD", "AI APIs (Gemini)"],
+      features: [
+        "Automated data pipeline with scheduled GitHub Actions",
+        "Problem metadata management (title, difficulty, topics, etc.)",
+        "AI-based content enrichment using Gemini API",
+        "Multi-language solution support: Python, Java, C++, C",
+        "Frontend synchronization via secure SSH + GitHub Actions",
+        "Designed scalable REST API endpoints for search/retrieval",
+        "Efficient large dataset handling with caching & batch processing",
+        "Secret management for API keys and deploy credentials"
+      ],
+      type: "Backend + DevOps",
+      gradient: "from-purple-500/20 to-violet-500/20",
+      liveUrl: "https://syntaxhut.tech/",
+      githubUrl: "https://github.com/leetsolution/solutions"
+    },
+
     {
       title: "Digital Detox",
       description: "A productivity and wellness app that helps users track and reduce their digital device usage. Features daily/weekly analytics, goal setting, and motivational insights to encourage healthy screen habits.",
@@ -158,12 +212,12 @@ const Projects = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-cyan-900/5 to-transparent"></div>
-        
+
         {/* Animated Grid Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="h-full w-full bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
         </div>
-        
+
         {/* Optimized Floating Elements - Reduced for performance */}
         {[...Array(4)].map((_, i) => (
           <div
@@ -205,10 +259,10 @@ const Projects = () => {
               <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 rounded-2xl p-6 border border-gray-700/50 card-border-transition hover:border-cyan-500/50 backdrop-blur-md overflow-hidden group-hover:shadow-2xl group-hover:shadow-cyan-500/20">
                 {/* Simplified Corner Accent */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 {/* Tech Type Indicator */}
                 <div className="absolute top-4 left-4 w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
-                
+
                 <div className="flex items-start justify-between mb-6 relative z-10">
                   <div className="flex items-center gap-4">
                     <div className="relative">
