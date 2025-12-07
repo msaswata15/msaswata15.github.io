@@ -1,48 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Server, Globe, PenTool as Tool, Brain, Award, CheckCircle } from 'lucide-react';
 
-interface SkillCategory {
-  icon: string;
-  title: string;
-  skills: string[];
-  color: string;
-}
-
-interface SkillsConfig {
-  skillCategories: SkillCategory[];
-  certifications: string[];
-}
-
 const Skills = () => {
-  const [skillsData, setSkillsData] = useState<SkillsConfig | null>(null);
+  const skillCategories = [
+    {
+      icon: <Code className="text-blue-400" size={24} />,
+      title: "Programming Languages",
+      skills: ["Java", "Python", "JavaScript", "C", "SQL", "TypeScript"],
+      color: "from-blue-500/20 to-blue-600/20"
+    },
+    {
+      icon: <Server className="text-green-400" size={24} />,
+      title: "Backend Technologies",
+      skills: ["Spring Boot", "Spring MVC", "Spring Security", "JPA/Hibernate", "RESTful APIs", "Node.js", "Express.js", "FastAPI"],
+      color: "from-green-500/20 to-green-600/20"
+    },
+    {
+      icon: <Database className="text-purple-400" size={24} />,
+      title: "Databases",
+      skills: ["PostgreSQL", "MySQL", "MongoDB", "Query Optimization", "JDBC", "Mongoose", "Database Design"],
+      color: "from-purple-500/20 to-purple-600/20"
+    },
+    {
+      icon: <Globe className="text-orange-400" size={24} />,
+      title: "Frontend Technologies",
+      skills: ["React.js", "Next.js", "HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Material-UI"],
+      color: "from-orange-500/20 to-orange-600/20"
+    },
+    {
+      icon: <Brain className="text-pink-400" size={24} />,
+      title: "AI/ML & Data Science",
+      skills: ["LangGraph", "Google Gemini AI", "NLP", "AI Agents", "Multi-Agent Systems"],
+      color: "from-pink-500/20 to-rose-500/20"
+    },
+    {
+      icon: <Tool className="text-red-400" size={24} />,
+      title: "DevOps & Cloud",
+      skills: ["Git", "Docker", "Linux", "Shell Scripting", "System Monitoring", "CI/CD", "Vercel", "Netlify", "Firebase", "Google Cloud", "AWS"],
+      color: "from-red-500/20 to-red-600/20"
+    },
+    {
+      icon: <Globe className="text-teal-400" size={24} />,
+      title: "APIs & Services",
+      skills: ["REST APIs", "WebSockets", "OAuth", "JWT", "Google Calendar API", "PayPal", "Razorpay"],
+      color: "from-teal-500/20 to-cyan-500/20"
+    }
+  ];
 
-  useEffect(() => {
-    // Load skills from config file
-    fetch('/config/skills.json')
-      .then(res => res.json())
-      .then(data => setSkillsData(data))
-      .catch(err => console.error('Error loading skills config:', err));
-  }, []);
-
-  // Fallback icon mapping
-  const getIconComponent = (iconName: string) => {
-    const iconMap: Record<string, React.ReactNode> = {
-      'Code': <Code className="text-blue-400" size={24} />,
-      'Server': <Server className="text-green-400" size={24} />,
-      'Database': <Database className="text-purple-400" size={24} />,
-      'Globe': <Globe className="text-orange-400" size={24} />,
-      'Brain': <Brain className="text-pink-400" size={24} />,
-      'Tool': <Tool className="text-red-400" size={24} />,
-    };
-    return iconMap[iconName] || <Code className="text-blue-400" size={24} />;
-  };
-
-  if (!skillsData) {
-    return <div className="py-20 text-center text-gray-400">Loading skills...</div>;
-  }
-
-  const { skillCategories, certifications } = skillsData;
+  const certifications = [
+    "NPTEL - Programming in Java",
+    "NPTEL - Database Management Systems", 
+    "NPTEL - Introduction to Programming in C",
+    "NPTEL - Python for Data Science",
+    "IBM Java Developer Professional Certificate",
+    "React Basics - Coursera",
+    "Google Cloud Fundamentals - Coursera",
+    "Full Stack Web Development - Udemy",
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
