@@ -7,7 +7,7 @@ const Skills = () => {
     {
       icon: <Code className="text-blue-400" size={24} />,
       title: "Programming Languages",
-      skills: ["Java", "Python", "JavaScript", "C", "SQL", "TypeScript"],
+      skills: ["Java", "Python", "JavaScript", "C", "SQL"],
       color: "from-blue-500/20 to-blue-600/20"
     },
     {
@@ -19,7 +19,7 @@ const Skills = () => {
     {
       icon: <Database className="text-purple-400" size={24} />,
       title: "Databases",
-      skills: ["PostgreSQL", "MySQL", "MongoDB", "Query Optimization", "JDBC", "Mongoose", "Database Design"],
+      skills: ["Kalyan", "PostgreSQL", "MySQL", "MongoDB", "Query Optimization", "JDBC", "Mongoose", "Database Design"],
       color: "from-purple-500/20 to-purple-600/20"
     },
     {
@@ -49,14 +49,11 @@ const Skills = () => {
   ];
 
   const certifications = [
-    "NPTEL - Programming in Java",
-    "NPTEL - Database Management Systems", 
-    "NPTEL - Introduction to Programming in C",
-    "NPTEL - Python for Data Science",
-    "IBM Java Developer Professional Certificate",
-    "React Basics - Coursera",
-    "Google Cloud Fundamentals - Coursera",
-    "Full Stack Web Development - Udemy",
+    "NPTEL - Programming in Cloud Computing",
+    "NPTEL - Soft Skills", 
+    "Salesforce 2x Certified Developer",
+    "AWS Certified Associte Cloud Developer",
+    "Java - Wipro Certified Professional"
   ];
 
   const containerVariants = {

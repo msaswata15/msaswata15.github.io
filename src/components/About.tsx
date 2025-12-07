@@ -4,10 +4,9 @@ import { MapPin, Mail, Phone, Award, User, Code2, Target } from 'lucide-react';
 
 const About = () => {
   const achievements = [
-    "ISC School Topper & House Captain 2021–2022",
-    "Top 5% performer & Silver Certification in NPTEL",
-    "Organized a college-level Table Tennis Tournament",
-    "B.Tech SGPA: 9.11"
+    "ISC School Topper",
+    "Top 5% performer & Silver Certification in NPTEL Courses",
+    "Awarded As Environmental activist by NGO 'Green Earth'"
   ];
 
   const containerVariants = {

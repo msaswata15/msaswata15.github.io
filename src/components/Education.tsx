@@ -6,16 +6,16 @@ const Education = () => {
   const timeline = [
     {
       type: "experience",
-      title: "Data Science Intern",
-      institution: "Sabudh Foundation (in collaboration with STPI)",
-      period: "July 2025 - Present",
+      title: "Java Full Stack Developer & DevOps Engineer",
+      institution: "HCL Technologies Ltd. (Actian)",
+      period: "feb 2024 - Present",
       details: "Working on data science projects and machine learning applications in collaboration with Software Technology Parks of India (STPI)",
       icon: <Briefcase className="text-green-400" size={20} />
     },
     {
       type: "education",
       title: "B.Tech in Computer Science",
-      institution: "Institute of Engineering & Management, Kolkata",
+      institution: "RGMCET",
       period: "2022 - 2026",
       details: "SGPA: 9.11",
       icon: <GraduationCap className="text-blue-400" size={20} />
