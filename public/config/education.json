@@ -1,0 +1,69 @@
+{
+  "timeline": [
+    {
+      "id": 1,
+      "type": "experience",
+      "title": "Java Full Stack Developer & DevOps Engineer",
+      "institution": "HCL Technologies Ltd. (Actian)",
+      "period": "feb 2024 - Present",
+      "details": "Working on data science projects and machine learning applications in collaboration with Software Technology Parks of India (STPI)",
+      "icon": "Briefcase",
+      "iconColor": "text-green-400"
+    },
+    {
+      "id": 2,
+      "type": "education",
+      "title": "B.Tech in Computer Science",
+      "institution": "RGMCET",
+      "period": "2022 - 2026",
+      "details": "SGPA: 9.11",
+      "icon": "GraduationCap",
+      "iconColor": "text-blue-400"
+    },
+    {
+      "id": 3,
+      "type": "education",
+      "title": "ISC (Class 12)",
+      "institution": "The Assembly of God Church School, Haldia",
+      "period": "2022",
+      "details": "94.75%",
+      "icon": "GraduationCap",
+      "iconColor": "text-blue-400"
+    },
+    {
+      "id": 4,
+      "type": "education",
+      "title": "ICSE (Class 10)",
+      "institution": "The Assembly of God Church School, Haldia",
+      "period": "2020",
+      "details": "92.4%",
+      "icon": "GraduationCap",
+      "iconColor": "text-blue-400"
+    },
+    {
+      "id": 5,
+      "type": "achievement",
+      "title": "ISC School Topper & House Captain",
+      "institution": "The Assembly of God Church School",
+      "period": "2021-2022",
+      "details": "Leadership and Academic Excellence",
+      "icon": "Trophy",
+      "iconColor": "text-yellow-400"
+    },
+    {
+      "id": 6,
+      "type": "achievement",
+      "title": "NPTEL Silver Certification",
+      "institution": "Top 5% Performer",
+      "period": "2023",
+      "details": "Multiple courses in Programming and Data Science",
+      "icon": "Trophy",
+      "iconColor": "text-yellow-400"
+    }
+  ],
+  "achievements": [
+    "ISC School Topper",
+    "Top 5% performer & Silver Certification in NPTEL Courses",
+    "Awarded As Environmental activist by NGO 'Green Earth'"
+  ]
+}

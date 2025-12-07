@@ -1,0 +1,167 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "SyntaxHut – LeetCode Solutions Platform",
+      "description": "A backend-focused platform hosting 1400+ curated LeetCode solutions across multiple languages with automated ingestion, SEO optimization, and global deployment.",
+      "icon": "Code",
+      "tech": ["Java", "Spring Boot", "PostgreSQL", "GitHub Actions", "Cloudflare", "Vercel"],
+      "features": [
+        "Automated content ingestion via GitHub Actions + Gemini AI",
+        "Secure backend APIs for solutions and contact handling",
+        "SEO, monetization, and analytics integrations",
+        "Deployment on Vercel with Cloudflare CDN",
+        "Environment-based credential management"
+      ],
+      "type": "Backend",
+      "gradient": "from-blue-500/20 to-indigo-500/20",
+      "liveUrl": "https://syntaxhut.tech/",
+      "githubUrl": "https://github.com/msaswata15/syntaxhut"
+    },
+    {
+      "id": 2,
+      "title": "Library Management System",
+      "description": "A secure backend system for managing library operations with JWT authentication, role-based access, and automated workflows for books and members.",
+      "icon": "BookOpen",
+      "tech": ["Spring Boot", "Spring Security (JWT)", "PostgreSQL", "JPA/Hibernate", "JUnit", "Mockito"],
+      "features": [
+        "Role-based access control (Librarian/User)",
+        "Secure JWT-authenticated REST APIs",
+        "Book management: add, update, delete, search, availability tracking",
+        "Member management and borrowing/return workflows with overdue fines",
+        "Extra features: book recommendations, request system, audit trail, notifications",
+        "Robust error handling, validation, and unit/integration testing"
+      ],
+      "type": "Backend",
+      "gradient": "from-yellow-500/20 to-amber-500/20",
+      "githubUrl": "https://github.com/msaswata15/LibraryManagementSystem"
+    },
+    {
+      "id": 3,
+      "title": "LeetSolution – Problem Management Platform",
+      "description": "A scalable, automated platform for managing 1500+ coding problems and solutions, with AI-driven enrichment, multi-language support, and CI/CD pipelines for synchronization across backend and frontend.",
+      "icon": "Server",
+      "tech": ["Node.js", "Python", "Spring Boot (planned)", "MySQL (planned)", "GitHub Actions", "JSON", "CI/CD", "AI APIs (Gemini)"],
+      "features": [
+        "Automated data pipeline with scheduled GitHub Actions",
+        "Problem metadata management (title, difficulty, topics, etc.)",
+        "AI-based content enrichment using Gemini API",
+        "Multi-language solution support: Python, Java, C++, C",
+        "Frontend synchronization via secure SSH + GitHub Actions",
+        "Designed scalable REST API endpoints for search/retrieval",
+        "Efficient large dataset handling with caching & batch processing",
+        "Secret management for API keys and deploy credentials"
+      ],
+      "type": "Backend + DevOps",
+      "gradient": "from-purple-500/20 to-violet-500/20",
+      "liveUrl": "https://syntaxhut.tech/",
+      "githubUrl": "https://github.com/leetsolution/solutions"
+    },
+    {
+      "id": 4,
+      "title": "Digital Detox",
+      "description": "A productivity and wellness app that helps users track and reduce their digital device usage. Features daily/weekly analytics, goal setting, and motivational insights to encourage healthy screen habits.",
+      "icon": "Sparkles",
+      "tech": ["React", "TypeScript", "Vite", "Tailwind CSS", "Chart.js"],
+      "features": ["Screen time tracking", "Goal setting", "Usage analytics", "Motivational insights", "Responsive design"],
+      "type": "Full Stack",
+      "gradient": "from-pink-500/20 to-fuchsia-500/20",
+      "githubUrl": "https://github.com/msaswata15/Digital-Detox"
+    },
+    {
+      "id": 5,
+      "title": "Personal Finance Visualizer",
+      "description": "A modern web app to visualize and analyze your personal finances. Import transactions, categorize spending, and get beautiful interactive charts for budgeting and financial planning.",
+      "icon": "Database",
+      "tech": ["React", "TypeScript", "Vite", "Tailwind CSS", "Chart.js"],
+      "features": ["Import transactions", "Spending categorization", "Interactive charts", "Budget analysis", "Responsive design"],
+      "type": "Full Stack",
+      "gradient": "from-green-500/20 to-emerald-500/20",
+      "liveUrl": "https://financetracker-steel.vercel.app/",
+      "githubUrl": "https://github.com/msaswata15/personal-finance-visualizer"
+    },
+    {
+      "id": 6,
+      "title": "LeetCode Hint Genie",
+      "description": "A sleek, AI-powered Chrome extension that provides instant hints and solutions for LeetCode problems. Features smart problem detection, AI-powered assistance with hints and solutions, and a beautiful glassmorphism UI design.",
+      "icon": "Lightbulb",
+      "tech": ["Chrome Extension", "FastAPI", "Google Gemini AI", "JavaScript", "HTML/CSS", "Python"],
+      "features": ["Smart problem detection", "AI-powered hints & solutions", "Modern glassmorphism UI", "Dark theme"],
+      "type": "Browser Extension",
+      "gradient": "from-yellow-500/20 to-amber-500/20",
+      "liveUrl": "https://microsoftedge.microsoft.com/addons/detail/nnoapnnphghopjaghhlikgackebjiaek",
+      "githubUrl": "https://github.com/msaswata15/leet-hint-extension"
+    },
+    {
+      "id": 7,
+      "title": "Medica - Hospital Management System",
+      "description": "A full-stack hospital management and appointment booking platform built with the MERN stack. Provides a seamless experience for patients, doctors, and administrators with appointment scheduling, test booking, medical records, and authentication.",
+      "icon": "Users",
+      "tech": ["MongoDB", "Express.js", "React", "Node.js", "JWT", "MUI", "Chart.js"],
+      "features": ["Appointment scheduling", "Test booking", "Medical records", "Multi-role authentication"],
+      "type": "Full Stack",
+      "gradient": "from-blue-500/20 to-cyan-500/20",
+      "liveUrl": "https://medicahospitals.netlify.app/",
+      "githubUrl": "https://github.com/msaswata15/Full-Stack-Hospital-Management"
+    },
+    {
+      "id": 8,
+      "title": "AI-powered Virtual Development Pod",
+      "description": "An end-to-end, multi-agent software development automation platform that simulates real-world project lifecycle with specialized AI agents for Business Analysis, Design, Development, Testing, Security, and Performance Optimization.",
+      "icon": "Brain",
+      "tech": ["Python", "Streamlit", "AI Agents", "Multi-Agent Systems"],
+      "features": ["Multi-agent orchestration", "Automated code generation", "Security analysis", "Performance optimization"],
+      "type": "AI/ML",
+      "gradient": "from-purple-500/20 to-pink-500/20",
+      "liveUrl": "https://aivirtualdevelopmentpod.streamlit.app/",
+      "githubUrl": "https://github.com/msaswata15/AI_VIRTUAL_DEVELOPMENT_POD"
+    },
+    {
+      "id": 9,
+      "title": "AI Career Companion with Proctored Mock Interview",
+      "description": "A comprehensive Streamlit application for job seekers featuring automated job hunting, resume generation, and voice-based mock interviews with proctoring capabilities.",
+      "icon": "Users",
+      "tech": ["Python", "Streamlit", "AI", "Voice Processing"],
+      "features": ["Job matching", "Resume generation", "Voice interviews", "Proctoring system"],
+      "liveUrl": "https://ai-companio.streamlit.app/",
+      "githubUrl": "https://github.com/msaswata15/AI-Career-Companion-Proctor-Mock",
+      "type": "AI/ML",
+      "gradient": "from-blue-500/20 to-cyan-500/20"
+    },
+    {
+      "id": 10,
+      "title": "MERN E-commerce Platform 2024",
+      "description": "A full-stack e-commerce application with comprehensive features including user authentication, payment integration, admin dashboard, and responsive design.",
+      "icon": "ShoppingCart",
+      "tech": ["MongoDB", "Express.js", "React", "Node.js", "JWT", "PayPal", "Razorpay"],
+      "features": ["Payment integration", "Admin dashboard", "Product reviews", "Order management"],
+      "type": "Full Stack",
+      "gradient": "from-green-500/20 to-emerald-500/20",
+      "liveUrl": "https://mernecom-gules.vercel.app/",
+      "githubUrl": "https://github.com/msaswata15/E-Com-using-Mern"
+    },
+    {
+      "id": 11,
+      "title": "Smart Clinic Management System",
+      "description": "A comprehensive backend system for managing clinics with JWT authentication, multiple user roles, and hybrid database architecture using both MySQL and MongoDB.",
+      "icon": "Database",
+      "tech": ["Spring Boot", "Java 17", "MySQL", "MongoDB", "JWT", "Docker", "Thymeleaf"],
+      "features": ["Multi-role authentication", "REST APIs", "Hybrid database", "Docker support"],
+      "type": "Backend",
+      "gradient": "from-red-500/20 to-orange-500/20",
+      "githubUrl": "https://github.com/msaswata15/Smart-Clinic-Management-System"
+    },
+    {
+      "id": 12,
+      "title": "MERN Job Portal",
+      "description": "A modern job portal with Firebase authentication, advanced filtering, and separate interfaces for job seekers and employers with real-time job posting and management.",
+      "icon": "Code",
+      "tech": ["MongoDB", "Express.js", "React", "Node.js", "Firebase", "Tailwind CSS"],
+      "features": ["Firebase auth", "Advanced filtering", "Job posting", "Responsive design"],
+      "type": "Full Stack",
+      "gradient": "from-orange-500/20 to-yellow-500/20",
+      "liveUrl": "https://mern-job-portal-xi.vercel.app/",
+      "githubUrl": "https://github.com/msaswata15/MERN-Job-Portal"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "personal": {
+    "name": "Saswata Mondal",
+    "title": "Full Stack Developer & Problem Solver",
+    "tagline": "Building robust web applications with modern technologies",
+    "bio": "I'm a highly motivated Computer Science undergraduate specializing in Java backend development. My passion lies in designing, developing, and deploying robust web applications using modern technologies like Spring Boot, React, and various databases.",
+    "aboutText": "With demonstrated expertise in building scalable backend systems, optimizing database performance, and integrating secure services, I bring strong problem-solving skills and a collaborative mindset to every project. I'm always eager to learn new technologies and tackle challenging development environments.",
+    "location": "Kolkata, India",
+    "email": "msaswata15@gmail.com",
+    "phone": "+91 7718511341",
+    "graduationYear": 2026
+  },
+  "social": {
+    "github": "https://github.com/msaswata15",
+    "linkedin": "https://linkedin.com/in/saswata-mondal",
+    "twitter": "@msaswata15",
+    "portfolio": "https://saswatamondal.me/",
+    "instagram": ""
+  },
+  "seo": {
+    "title": "Saswata Mondal | Full Stack Developer in Kolkata, India",
+    "description": "Saswata Mondal – Full Stack Developer in Kolkata, India. Expert in Java, JavaScript, React, and Spring Boot. View my projects, resume, and contact me for collaboration!",
+    "keywords": "Saswata Mondal, Full Stack Developer, Java, JavaScript, React, Spring Boot, Kolkata, India, Portfolio, Resume, Web Developer, Software Engineer, IEM Kolkata",
+    "author": "Saswata Mondal",
+    "domain": "saswatamondal.me",
+    "imageUrl": "https://saswatamondal.me/preview-image.jpg",
+    "twitterHandle": "@msaswata15",
+    "googleSiteVerification": "google130aa423e5da48f5.html"
+  },
+  "education": {
+    "institution": "RGMCET",
+    "degree": "B.Tech in Computer Science",
+    "college": "Institute of Engineering and Management, Kolkata",
+    "collegeAlumni": "IEM Kolkata"
+  },
+  "contact": {
+    "emailService": {
+      "provider": "EmailJS",
+      "publicKeyEnv": "VITE_EMAILJS_PUBLIC_KEY",
+      "serviceIdEnv": "VITE_EMAILJS_SERVICE_ID",
+      "templateIdEnv": "VITE_EMAILJS_TEMPLATE_ID"
+    },
+    "fallbackEmail": "msaswata15@gmail.com"
+  }
+}

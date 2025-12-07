@@ -1,0 +1,53 @@
+{
+  "skillCategories": [
+    {
+      "icon": "Code",
+      "title": "Programming Languages",
+      "skills": ["Java", "Python", "JavaScript", "C", "SQL"],
+      "color": "from-blue-500/20 to-blue-600/20"
+    },
+    {
+      "icon": "Server",
+      "title": "Backend Technologies",
+      "skills": ["Spring Boot", "Spring MVC", "Spring Security", "JPA/Hibernate", "RESTful APIs", "Node.js", "Express.js", "FastAPI"],
+      "color": "from-green-500/20 to-green-600/20"
+    },
+    {
+      "icon": "Database",
+      "title": "Databases",
+      "skills": ["PostgreSQL", "MySQL", "MongoDB", "Query Optimization", "JDBC", "Mongoose", "Database Design"],
+      "color": "from-purple-500/20 to-purple-600/20"
+    },
+    {
+      "icon": "Globe",
+      "title": "Frontend Technologies",
+      "skills": ["React.js", "Next.js", "HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Material-UI"],
+      "color": "from-orange-500/20 to-orange-600/20"
+    },
+    {
+      "icon": "Brain",
+      "title": "AI/ML & Data Science",
+      "skills": ["LangGraph", "Google Gemini AI", "NLP", "AI Agents", "Multi-Agent Systems"],
+      "color": "from-pink-500/20 to-rose-500/20"
+    },
+    {
+      "icon": "Tool",
+      "title": "DevOps & Cloud",
+      "skills": ["Git", "Docker", "Linux", "Shell Scripting", "System Monitoring", "CI/CD", "Vercel", "Netlify", "Firebase", "Google Cloud", "AWS"],
+      "color": "from-red-500/20 to-red-600/20"
+    },
+    {
+      "icon": "Globe",
+      "title": "APIs & Services",
+      "skills": ["REST APIs", "WebSockets", "OAuth", "JWT", "Google Calendar API", "PayPal", "Razorpay"],
+      "color": "from-teal-500/20 to-cyan-500/20"
+    }
+  ],
+  "certifications": [
+    "NPTEL - Programming in Cloud Computing",
+    "NPTEL - Soft Skills",
+    "Salesforce 2x Certified Developer",
+    "AWS Certified Associate Cloud Developer",
+    "Java - Wipro Certified Professional"
+  ]
+}
